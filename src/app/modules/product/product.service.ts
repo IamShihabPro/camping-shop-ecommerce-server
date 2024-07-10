@@ -44,5 +44,6 @@ export const ProductsServices ={
     createProductsIntoDB,
     getAllProductsFromDB,
     getSingleProduct,
-    updateProductIntoDB
+    updateProductIntoDB,
+    deleteProductIntoDB
 }

@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Query, Schema, model } from "mongoose";
 import { TInventory, TProduct, TRating, TVariant } from "./product.interface";
 
 const variantSchema = new Schema<TVariant>({
@@ -33,5 +33,17 @@ const productSchema = new Schema<TProduct>({
   timestamps: true,
 }
 );
+
+
+// Middleware to exclude deleted cars
+productSchema.pre<Query<TProduct, TProduct>>('find', function(next) {
+  this.where({ isDeleted: { $ne: true } });
+  next();
+});
+
+productSchema.pre<Query<TProduct, TProduct>>('findOne', function(next) {
+  this.where({ isDeleted: { $ne: true } });
+  next();
+})
 
 export const Product = model<TProduct>('Product', productSchema);
