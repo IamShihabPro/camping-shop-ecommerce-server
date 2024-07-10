@@ -28,8 +28,21 @@ const getSingleProduct = async(id: string) =>{
     return result
 }
 
+
+const updateProductIntoDB = async(id: string, payload: Partial<TProduct>)=>{
+    const result = await Product.findByIdAndUpdate(id, payload, {new: true})
+    return result
+}
+  
+const deleteProductIntoDB = async(id: string) =>{
+    const result = await Product.findByIdAndUpdate(id, {isDeleted: true}, {new: true})
+    return result
+}
+  
+
 export const ProductsServices ={
     createProductsIntoDB,
     getAllProductsFromDB,
     getSingleProduct,
+    updateProductIntoDB
 }

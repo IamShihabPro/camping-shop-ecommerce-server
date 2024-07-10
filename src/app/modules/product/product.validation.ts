@@ -30,10 +30,23 @@ const createProductValidation = z.object({
     })
 });
   
-
+const updateProductValidation = z.object({
+  body: z.object({
+    name: z.string(),
+        description: z.string(),
+        price: z.number(),
+        category: z.string(),
+        tags: z.array(z.string()),
+        variants: z.array(VariantValidationSchema),
+        inventory: InventoryValidationSchema,
+        image: z.string(),
+        isDeleted: z.boolean().optional()
+  })
+});
 
 export const ProductsValidation ={
     createProductValidation,
+    updateProductValidation
 };
 
 

@@ -8,7 +8,7 @@ const router = express.Router()
 router.post('/', validateRequest(ProductsValidation.createProductValidation), ProducsController.createProducts)
 router.get('/', ProducsController.getAllProducts )
 router.get('/:id', ProducsController.getSingleProduct)
-// router.put('/:productId', ProducsController.updateSingleProduct);
+router.put('/:id', validateRequest(ProductsValidation.updateProductValidation), ProducsController.updateProduct);
 // router.delete('/:productId', ProducsController.deleteProduct)
 
 export const ProductRoute = router;
