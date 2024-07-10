@@ -2,8 +2,7 @@ import { Query, Schema, model } from "mongoose";
 import { TInventory, TProduct, TRating, TVariant } from "./product.interface";
 
 const variantSchema = new Schema<TVariant>({
-  type: { type: String, required: true },
-  image: { type: String, required: true },
+  image: { type: String},
 });
 
 const inventorySchema = new Schema<TInventory>({

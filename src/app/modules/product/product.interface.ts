@@ -1,6 +1,5 @@
 
 export type TVariant = {
-    type: string;
     image: string;
   }
   

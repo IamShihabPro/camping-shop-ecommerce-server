@@ -1,7 +1,6 @@
 import { z } from 'zod';
 
 const VariantValidationSchema = z.object({
-  type: z.string(),
   image: z.string()
 });
 
@@ -23,7 +22,7 @@ const createProductValidation = z.object({
         price: z.number(),
         category: z.string(),
         tags: z.array(z.string()),
-        variants: z.array(VariantValidationSchema),
+        variants: z.array(VariantValidationSchema).optional(),
         inventory: InventoryValidationSchema,
         image: z.string(),
         ratings: z.array(RatingValidationSchema).optional(),
