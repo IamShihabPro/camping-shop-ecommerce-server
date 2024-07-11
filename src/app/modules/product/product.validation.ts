@@ -31,14 +31,14 @@ const createProductValidation = z.object({
   
 const updateProductValidation = z.object({
   body: z.object({
-    name: z.string(),
-        description: z.string(),
-        price: z.number(),
-        category: z.string(),
+        name: z.string().optional(),
+        description: z.string().optional(),
+        price: z.number().optional(),
+        category: z.string().optional(),
         tags: z.array(z.string()),
-        variants: z.array(VariantValidationSchema),
-        inventory: InventoryValidationSchema,
-        image: z.string(),
+        variants: z.array(VariantValidationSchema).optional(),
+        inventory: InventoryValidationSchema.optional(),
+        image: z.string().optional(),
         isDeleted: z.boolean().optional()
   })
 });
