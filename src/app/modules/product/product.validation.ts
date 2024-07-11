@@ -35,7 +35,7 @@ const updateProductValidation = z.object({
         description: z.string().optional(),
         price: z.number().optional(),
         category: z.string().optional(),
-        tags: z.array(z.string()),
+        tags: z.array(z.string()).optional(),
         variants: z.array(VariantValidationSchema).optional(),
         inventory: InventoryValidationSchema.optional(),
         image: z.string().optional(),
