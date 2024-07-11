@@ -10,9 +10,9 @@ const InventoryValidationSchema = z.object({
 });
 
 const RatingValidationSchema = z.object({
-  email: z.string(),
+  // email: z.string(),
   rating: z.number(),
-  comment: z.string().optional(),
+  // comment: z.string().optional(),
 })
 
 const createProductValidation = z.object({

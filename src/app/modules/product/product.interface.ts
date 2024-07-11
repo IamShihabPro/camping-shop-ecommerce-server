@@ -9,9 +9,9 @@ export type TVariant = {
   }
   
   export type TRating = {
-    email: string;
+    // email: string;
     rating: number;
-    comment?: string;
+    // comment?: string;
   }
   
   export type TProduct = {

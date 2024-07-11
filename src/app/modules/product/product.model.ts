@@ -11,9 +11,9 @@ const inventorySchema = new Schema<TInventory>({
 });
 
 const ratingsSchema = new Schema<TRating>({
-  email: { type: String, required: true },
+  // email: { type: String, required: true },
   rating: { type: Number, required: true },
-  comment: { type: String },
+  // comment: { type: String },
 });
 
 const productSchema = new Schema<TProduct>({
