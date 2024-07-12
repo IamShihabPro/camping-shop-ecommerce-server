@@ -1,5 +1,5 @@
 import QueryBuilder from "../../builder/QueryBuilder"
-import { TProduct } from "./product.interface"
+import { TProduct, TRating } from "./product.interface"
 import { Product } from "./product.model"
 
 const createProductsIntoDB = async(payload: TProduct)=>{
@@ -39,11 +39,21 @@ const deleteProductIntoDB = async(id: string) =>{
     return result
 }
   
+const addRatings = async (id: string, payload: Partial<TRating>) => {
+    const result = await Product.findByIdAndUpdate(
+        id, 
+        { $push: { ratings: payload } }, 
+        { new: true }
+    );
+    return result;
+};
+  
 
 export const ProductsServices ={
     createProductsIntoDB,
     getAllProductsFromDB,
     getSingleProduct,
     updateProductIntoDB,
-    deleteProductIntoDB
+    deleteProductIntoDB,
+    addRatings
 }

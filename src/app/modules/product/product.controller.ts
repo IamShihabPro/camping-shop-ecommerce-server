@@ -57,10 +57,22 @@ const deleteProduct = catchAsync(async(req, res)=>{
       });
 })
 
-export const ProducsController ={
+const addRatings = catchAsync(async(req, res)=>{
+    const {id} = req.params
+    const result = await ProductsServices.addRatings(id, req.body)
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: 'Thanks for ratings',
+        data: result,
+      });
+})
+
+export const ProductsController ={
     createProducts,
     getAllProducts,
     getSingleProduct,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    addRatings
 }
