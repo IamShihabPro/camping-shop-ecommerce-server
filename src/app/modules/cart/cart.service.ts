@@ -16,12 +16,18 @@ const createCartsIntoDB = async (payload: TCart) => {
         throw new AppError(httpStatus.BAD_REQUEST, 'Insufficient quantity');
     }
 
+    // Set the price in the payload from the product's price
+    payload.price = product.price;
+    payload.image = product.image;
+
     // Check if the product already exists in the cart
     const existingCartItem = await Cart.findOne({ productId: payload.productId });
 
     if (existingCartItem) {
-        // If the product exists in the cart, increase the quantity
+        // If the product exists in the cart, increase the quantity and update the price
         existingCartItem.quantity += payload.quantity;
+        existingCartItem.price = product.price; // Ensure the price is updated
+        existingCartItem.image = product.image; // Ensure the image is updated
         await existingCartItem.save();
 
         // Update product inventory
@@ -33,7 +39,7 @@ const createCartsIntoDB = async (payload: TCart) => {
 
         return existingCartItem;
     } else {
-        // If the product does not exist in the cart, create a new cart entry
+        // If the product does not exist in the cart, create a new cart entry with the updated price
         const result = await Cart.create(payload);
 
         // Update product inventory

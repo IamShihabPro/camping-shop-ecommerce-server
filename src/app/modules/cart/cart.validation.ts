@@ -4,7 +4,7 @@ const createCartValidation = z.object({
     body: z.object({
         productId: z.string(),
         // price: z.number(),
-        image: z.string(),
+        // image: z.string(),
         quantity: z.number(),
     })
 });
