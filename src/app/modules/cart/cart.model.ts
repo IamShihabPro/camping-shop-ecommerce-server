@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Query, Schema, model } from "mongoose";
 import { TCart } from "./cat.interface";
 
 const cartSchema = new Schema<TCart>({
@@ -13,5 +13,17 @@ const cartSchema = new Schema<TCart>({
 {
   timestamps: true,
 })
+
+// Middleware to exclude deleted cars
+cartSchema.pre<Query<TCart, TCart>>('find', function(next) {
+  this.where({ isDeleted: { $ne: true } });
+  next();
+});
+
+cartSchema.pre<Query<TCart, TCart>>('findOne', function(next) {
+  this.where({ isDeleted: { $ne: true } });
+  next();
+})
+
 
 export const Cart = model<TCart>('Cart', cartSchema)
