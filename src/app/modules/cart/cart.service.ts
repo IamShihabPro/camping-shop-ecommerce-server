@@ -18,6 +18,8 @@ const createCartsIntoDB = async (payload: TCart) => {
     }
 
     // Set the price in the payload from the product's price
+    payload.name = product.name;
+    payload.category = product.category;
     payload.price = product.price;
     payload.image = product.image;
 
@@ -32,23 +34,23 @@ const createCartsIntoDB = async (payload: TCart) => {
         await existingCartItem.save();
 
         // Update product inventory
-        product.inventory.quantity -= payload.quantity;
-        if (product.inventory.quantity === 0) {
-            product.inventory.inStock = false;
-        }
-        await product.save();
+        // product.inventory.quantity -= payload.quantity;
+        // if (product.inventory.quantity === 0) {
+        //     product.inventory.inStock = false;
+        // }
+        // await product.save();
 
         return existingCartItem;
     } else {
         // If the product does not exist in the cart, create a new cart entry with the updated price
         const result = await Cart.create(payload);
 
-        // Update product inventory
-        product.inventory.quantity -= payload.quantity;
-        if (product.inventory.quantity === 0) {
-            product.inventory.inStock = false;
-        }
-        await product.save();
+        // // Update product inventory
+        // product.inventory.quantity -= payload.quantity;
+        // if (product.inventory.quantity === 0) {
+        //     product.inventory.inStock = false;
+        // }
+        // await product.save();
 
         return result;
     }
