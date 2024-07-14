@@ -33,6 +33,21 @@ const productSchema = new Schema<TProduct>({
 }
 );
 
+const capitalizeFirstLetter = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+};
+
+const capitalizeWords = (str: string) => {
+  return str.split(' ').map(word => capitalizeFirstLetter(word)).join(' ');
+};
+
+
+productSchema.pre('save', function (next) {
+  this.name = capitalizeWords(this.name);
+  this.category = capitalizeFirstLetter(this.category);
+  next();
+});
+
 
 // Middleware to exclude deleted cars
 productSchema.pre<Query<TProduct, TProduct>>('find', function(next) {
