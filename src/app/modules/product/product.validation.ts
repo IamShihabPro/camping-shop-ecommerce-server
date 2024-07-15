@@ -21,7 +21,7 @@ const createProductValidation = z.object({
         description: z.string(),
         price: z.number(),
         category: z.string(),
-        tags: z.array(z.string()),
+        tags: z.array(z.string()).optional(),
         variants: z.array(VariantValidationSchema).optional(),
         inventory: InventoryValidationSchema,
         image: z.string(),
