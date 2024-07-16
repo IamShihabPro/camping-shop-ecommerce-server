@@ -1,6 +1,7 @@
 import express from 'express'
 import { ProductRoute } from "../modules/product/product.route"
 import { CartRoute } from '../modules/cart/cart.route'
+import { OrderRoute } from '../modules/order/order.route'
 
 const router = express.Router()
 
@@ -12,6 +13,10 @@ const moduleRoutes = [
     {
         path: '/carts',
         route: CartRoute
+    },
+    {
+        path: '/orders',
+        route: OrderRoute
     },
 ]
 

@@ -1,11 +1,21 @@
 import { Types } from "mongoose";
 
+export type TProductDetails = {
+    productId: Types.ObjectId;
+    name: string
+    category: string
+    quantity: number
+    price: number
+    image: string
+}
+
 export type TOrder = {
-    cartId: Types.ObjectId;
-    name: string;
-    category: string;
+    userName: string;
+    userEmail: string;
+    phone: number;
+    address: string;
+    products: TProductDetails[]
     totalCost: number;
-    quantity: number;
     isDeleted: boolean;
 }
   
