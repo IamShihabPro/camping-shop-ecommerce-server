@@ -1,9 +1,9 @@
 import { Query, Schema, model } from "mongoose";
-import { TInventory, TProduct, TRating, TVariant } from "./product.interface";
+import { TInventory, TProduct, TRating } from "./product.interface";
 
-const variantSchema = new Schema<TVariant>({
-  image: { type: String},
-});
+// const variantSchema = new Schema<TVariant>({
+//   image: { type: String},
+// });
 
 const inventorySchema = new Schema<TInventory>({
   quantity: { type: Number, required: true },
@@ -21,8 +21,8 @@ const productSchema = new Schema<TProduct>({
   description: { type: String, required: true },
   price: { type: Number, required: true },
   category: { type: String, required: true },
-  tags: { type: [String], required: true },
-  variants: { type: [variantSchema], required: true },
+  // tags: { type: [String], required: true },
+  // variants: { type: [variantSchema], required: true },
   inventory: { type: inventorySchema, required: true },
   image: { type: String, required: true },
   ratings: { type: [ratingsSchema] },

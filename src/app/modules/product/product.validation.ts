@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
-const VariantValidationSchema = z.object({
-  image: z.string()
-});
+// const VariantValidationSchema = z.object({
+//   image: z.string()
+// });
 
 const InventoryValidationSchema = z.object({
   quantity: z.number(),
@@ -21,8 +21,8 @@ const createProductValidation = z.object({
         description: z.string(),
         price: z.number(),
         category: z.string(),
-        tags: z.array(z.string()).optional(),
-        variants: z.array(VariantValidationSchema).optional(),
+        // tags: z.array(z.string()).optional(),
+        // variants: z.array(VariantValidationSchema).optional(),
         inventory: InventoryValidationSchema,
         image: z.string(),
         ratings: z.array(RatingValidationSchema).optional(),
@@ -35,8 +35,8 @@ const updateProductValidation = z.object({
         description: z.string().optional(),
         price: z.number().optional(),
         category: z.string().optional(),
-        tags: z.array(z.string()).optional(),
-        variants: z.array(VariantValidationSchema).optional(),
+        // tags: z.array(z.string()).optional(),
+        // variants: z.array(VariantValidationSchema).optional(),
         inventory: InventoryValidationSchema.optional(),
         image: z.string().optional(),
         isDeleted: z.boolean().optional()

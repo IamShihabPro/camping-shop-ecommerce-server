@@ -1,7 +1,7 @@
 
-export type TVariant = {
-    image: string;
-  }
+// export type TVariant = {
+//     image: string;
+//   }
   
   export type TInventory = {
     quantity: number;
@@ -19,8 +19,8 @@ export type TVariant = {
     description: string;
     price: number;
     category: string;
-    tags: string[];
-    variants: TVariant[];
+    // tags: string[];
+    // variants: TVariant[];
     inventory: TInventory;
     image: string;
     ratings: TRating[];
